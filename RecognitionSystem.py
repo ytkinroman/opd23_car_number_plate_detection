@@ -86,13 +86,11 @@ class RecognizePlate:
         :param results_detection: результаты детекции номерных знаков YOLO
         :return: строка с распознанным номером или None, если номер не распознан
         """
-        for box in results_detection[0].boxes:  # Результаты для первого изображения
+        for box in results_detection[0].boxes:
             x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
             cropped = frame[int(y1):int(y2), int(x1):int(x2)]
-            # Применяем OCR
             results = self.__model_recognize.readtext(cropped)
-            # Проверка каждого распознанного текста
             for (bbox, text, prob) in results:
                 string = ''.join(text.split())
                 if self.__match_pattern(string):
-                    return string  # Возвращаем первый совпавший номер
+                    return string
