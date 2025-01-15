@@ -13,6 +13,8 @@ git clone https://github.com/ytkinroman/opd24_car_number_plate_detection.git
 ```
 pip install -r requirements.txt
 ```
+3. *В main.py* указать путь к видео и путь для сохранения
+4. Запустить *main.py*
 
 # Дальнейшие шаги.
 1. Улучшения алгоритма распознавания для охвата специфическим форматов номеров.
